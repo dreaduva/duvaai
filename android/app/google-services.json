@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "344087960556",
+    "project_id": "duvaai",
+    "storage_bucket": "duvaai.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:344087960556:android:983019eaf1da6a2ba9bec9",
+        "android_client_info": {
+          "package_name": "com.example.duvaai"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCh_gHZlvoHVtNzhlpBbTJOlnR6Z9d8vpc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
