@@ -24,10 +24,10 @@ class _DashboardPageState extends State<DashboardPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(appName),
+        title: const Text(appName),
         actions: [
           IconButton(
-            icon: Icon(Icons.logout),
+            icon: const Icon(Icons.logout),
             onPressed: () => _dashboardController.signOut(),
           ),
         ],
@@ -38,9 +38,9 @@ class _DashboardPageState extends State<DashboardPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _buildGreetingSection(context),
-            SizedBox(height: paddingMedium),
+            const SizedBox(height: paddingMedium),
             _buildQuickAccessSection(context),
-            SizedBox(height: paddingMedium),
+            const SizedBox(height: paddingMedium),
             _buildAutomationsSection(context),
           ],
         ),
@@ -68,15 +68,15 @@ class _DashboardPageState extends State<DashboardPage> {
   }
 
   Widget _buildGreetingSection(BuildContext context) {
-    final userName = 'Anna'; // Replace with the actual user's name
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'welcome'.trParams({'name': userName}),
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          'welcome ${_dashboardController.user?.email ?? ''}',
+          style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: paddingSmall),
+        const SizedBox(height: paddingSmall),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -99,15 +99,15 @@ class _DashboardPageState extends State<DashboardPage> {
         child: Column(
           children: [
             Icon(icon, size: 40),
-            SizedBox(height: paddingSmall),
+            const SizedBox(height: paddingSmall),
             Text(
               count,
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: paddingSmall),
+            const SizedBox(height: paddingSmall),
             Text(
               label,
-              style: TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16),
             ),
           ],
         ),
@@ -119,11 +119,11 @@ class _DashboardPageState extends State<DashboardPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        const Text(
           'Quick Access',
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: paddingSmall),
+        const SizedBox(height: paddingSmall),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -162,17 +162,17 @@ class _DashboardPageState extends State<DashboardPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        const Text(
           'Automations for your Business',
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
-        SizedBox(height: paddingSmall),
+        const SizedBox(height: paddingSmall),
         GridView.count(
           shrinkWrap: true,
           crossAxisCount: 2,
           crossAxisSpacing: paddingMedium,
           mainAxisSpacing: paddingMedium,
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           children: [
             _AutomationCard(
               title: 'Facebook Posts Calendar',
@@ -200,7 +200,7 @@ class _DashboardPageState extends State<DashboardPage> {
             ),
             Container(
               padding: const EdgeInsets.all(paddingMedium),
-              child: Center(
+              child: const Center(
                 child: Text(
                   'More awesome automations coming soon!',
                   style: TextStyle(color: Colors.grey),
@@ -236,7 +236,7 @@ class _QuickAccessButton extends StatelessWidget {
             radius: 30,
             child: Icon(icon, size: 30),
           ),
-          SizedBox(height: paddingSmall),
+          const SizedBox(height: paddingSmall),
           Text(label),
         ],
       ),
@@ -272,7 +272,7 @@ class _AutomationCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Icon(icon, size: 40, color: isActive ? onPrimaryColor : onSecondaryColor),
-              SizedBox(height: paddingSmall),
+              const SizedBox(height: paddingSmall),
               Expanded(
                 child: Text(
                   title,
@@ -280,12 +280,12 @@ class _AutomationCard extends StatelessWidget {
                 ),
               ),
               if (isActive)
-                Align(
+                const Align(
                   alignment: Alignment.bottomRight,
                   child: Icon(Icons.check_circle, color: Colors.green),
                 )
               else
-                Align(
+                const Align(
                   alignment: Alignment.bottomRight,
                   child: Icon(Icons.info, color: Colors.grey),
                 ),
