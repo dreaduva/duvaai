@@ -1,9 +1,7 @@
-// lib/views/dashboard/dashboard_page.dart
 import 'package:duvaai/common/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../controllers/dashboard_controller.dart';
-
 
 class DashboardPage extends StatefulWidget {
   @override
@@ -11,7 +9,8 @@ class DashboardPage extends StatefulWidget {
 }
 
 class _DashboardPageState extends State<DashboardPage> {
-  final DashboardController _dashboardController = Get.put(DashboardController());
+  final DashboardController _dashboardController =
+      Get.put(DashboardController());
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
@@ -68,12 +67,11 @@ class _DashboardPageState extends State<DashboardPage> {
   }
 
   Widget _buildGreetingSection(BuildContext context) {
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'welcome ${_dashboardController.user?.email ?? ''}',
+          'welcome ${_dashboardController.user?.displayName ?? ''}',
           style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
         const SizedBox(height: paddingSmall),
@@ -88,7 +86,8 @@ class _DashboardPageState extends State<DashboardPage> {
     );
   }
 
-  Widget _buildStatCard(BuildContext context, String count, String label, IconData icon) {
+  Widget _buildStatCard(
+      BuildContext context, String count, String label, IconData icon) {
     return Card(
       elevation: 2,
       color: surfaceVariantColor,
@@ -271,12 +270,16 @@ class _AutomationCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Icon(icon, size: 40, color: isActive ? onPrimaryColor : onSecondaryColor),
+              Icon(icon,
+                  size: 40,
+                  color: isActive ? onPrimaryColor : onSecondaryColor),
               const SizedBox(height: paddingSmall),
               Expanded(
                 child: Text(
                   title,
-                  style: TextStyle(fontSize: 18, color: isActive ? onPrimaryColor : onSecondaryColor),
+                  style: TextStyle(
+                      fontSize: 18,
+                      color: isActive ? onPrimaryColor : onSecondaryColor),
                 ),
               ),
               if (isActive)
