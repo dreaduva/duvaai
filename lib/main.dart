@@ -1,4 +1,3 @@
-// lib/main.dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -28,15 +27,17 @@ class MyApp extends StatelessWidget {
       ),
       darkTheme: ThemeData(
         useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal, brightness: Brightness.dark),
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.teal, brightness: Brightness.dark),
         textTheme: AppTheme.darkTheme.textTheme,
       ),
       themeMode: ThemeMode.system,
       translations: AppLocalizations(),
       locale: Get.deviceLocale,
-      fallbackLocale: Locale('en', 'US'),
+      fallbackLocale: const Locale('en', 'US'),
       initialBinding: AuthBinding(),
-      initialRoute: _authController.user == null ? AppRoutes.login : AppRoutes.dashboard,
+      initialRoute:
+          _authController.user == null ? AppRoutes.login : AppRoutes.dashboard,
       getPages: AppRoutes.pages,
     );
   }
