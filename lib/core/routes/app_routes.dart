@@ -1,4 +1,3 @@
-// lib/core/routes/app_routes.dart
 import 'package:get/get.dart';
 import '../../views/auth/login_page.dart';
 import '../../views/dashboard/dashboard_page.dart';

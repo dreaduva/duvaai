@@ -13,13 +13,13 @@ class AppTheme {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.teal, // This replaces `primary`
-        foregroundColor: Colors.white, // This replaces `onPrimary`
+        backgroundColor: Colors.teal,
+        foregroundColor: Colors.white,
       ),
     ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
-        foregroundColor: Colors.teal, // This replaces `primary`
+        foregroundColor: Colors.teal,
       ),
     ),
   );
@@ -34,13 +34,13 @@ class AppTheme {
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.teal, // This replaces `primary`
-        foregroundColor: Colors.black, // This replaces `onPrimary`
+        backgroundColor: Colors.teal,
+        foregroundColor: Colors.black,
       ),
     ),
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
-        foregroundColor: Colors.teal, // This replaces `primary`
+        foregroundColor: Colors.teal,
       ),
     ),
   );
