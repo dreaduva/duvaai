@@ -26,14 +26,11 @@ class AuthController extends GetxController {
 
   Future<void> loginWithGoogle() async {
     try {
-      print("Starting Google sign-in process");
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
       if (googleUser == null) {
-        // The user canceled the sign-in
-        print("Google sign-in canceled");
         return;
       }
-      print("Google sign-in successful, authenticating...");
+
       final GoogleSignInAuthentication googleAuth =
           await googleUser.authentication;
       final firebase_auth.AuthCredential credential =
@@ -41,14 +38,13 @@ class AuthController extends GetxController {
         idToken: googleAuth.idToken,
         accessToken: googleAuth.accessToken,
       );
-      print("Credential obtained, signing in with Firebase...");
+
       UserCredential userCredential =
           await _auth.signInWithCredential(credential);
       await _saveUserToFirestore(userCredential.user);
-      print("User signed in, navigating to dashboard...");
+
       Get.offAllNamed(AppRoutes.dashboard);
     } catch (e) {
-      print('Google sign-in error: $e');
       _showSnackBar('Login Error', e.toString());
     }
   }
