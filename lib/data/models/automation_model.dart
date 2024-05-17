@@ -1,37 +1,33 @@
-enum AutomationType { facebookPost, instagramPost, googleReview, seoAnalysis }
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Automation {
   final String id;
-  final String name;
-  final AutomationType type;
+  final String type;
   final bool isActive;
   final DateTime lastRun;
 
   Automation({
     required this.id,
-    required this.name,
     required this.type,
     required this.isActive,
     required this.lastRun,
   });
 
-  factory Automation.fromMap(Map<String, dynamic> map) {
+  factory Automation.fromMap(Map<String, dynamic> data, String documentId) {
     return Automation(
-      id: map['id'],
-      name: map['name'],
-      type: AutomationType.values[map['type']],
-      isActive: map['isActive'],
-      lastRun: DateTime.parse(map['lastRun']),
+      id: documentId,
+      type: data['type'] ?? '',
+      isActive: data['isActive'] ?? false,
+      lastRun: (data['lastRun'] as Timestamp).toDate(),
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
-      'name': name,
-      'type': type.index,
+      'type': type,
       'isActive': isActive,
-      'lastRun': lastRun.toIso8601String(),
+      'lastRun': lastRun,
     };
   }
 }

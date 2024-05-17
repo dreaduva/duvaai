@@ -64,6 +64,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '344087960556',
     projectId: 'duvaai',
     storageBucket: 'duvaai.appspot.com',
+    androidClientId: '344087960556-5hhsfe9knd8bdlthrvkmsohhbkqctru6.apps.googleusercontent.com',
+    iosClientId: '344087960556-al42rvb543fudaqru205nq897f8g4hml.apps.googleusercontent.com',
     iosBundleId: 'com.example.duvaai',
   );
 
@@ -73,6 +75,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '344087960556',
     projectId: 'duvaai',
     storageBucket: 'duvaai.appspot.com',
+    androidClientId: '344087960556-5hhsfe9knd8bdlthrvkmsohhbkqctru6.apps.googleusercontent.com',
+    iosClientId: '344087960556-al42rvb543fudaqru205nq897f8g4hml.apps.googleusercontent.com',
     iosBundleId: 'com.example.duvaai',
   );
 
@@ -85,4 +89,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'duvaai.appspot.com',
     measurementId: 'G-13B1CGKTEN',
   );
+
 }
