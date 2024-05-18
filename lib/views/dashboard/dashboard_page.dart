@@ -1,4 +1,5 @@
 import 'package:duvaai/common/utils/constants.dart';
+import 'package:duvaai/views/dashboard/widgets/automation_card.dart';
 import 'package:duvaai/views/dashboard/widgets/custom_bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -143,50 +144,37 @@ class _DashboardPageState extends State<DashboardPage> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           'Automations for your Business',
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          style: Theme.of(context).textTheme.displaySmall,
         ),
-        const SizedBox(height: paddingSmall),
+        const SizedBox(height: paddingMedium),
         GridView.count(
           shrinkWrap: true,
           crossAxisCount: 2,
-          crossAxisSpacing: paddingMedium,
-          mainAxisSpacing: paddingMedium,
-          physics: const NeverScrollableScrollPhysics(),
-          children: [
-            _AutomationCard(
-              title: 'Facebook Posts Calendar',
-              icon: Icons.facebook,
+          crossAxisSpacing: paddingSmall,
+          mainAxisSpacing: paddingSmall,
+          children: const [
+            AutomationCard(
+              iconData: Icons.facebook,
+              title: 'Facebook',
+              subtitle: 'Posts Calendar',
               isActive: true,
-              onTap: () => Get.toNamed('/facebookPost'),
             ),
-            _AutomationCard(
-              title: 'Instagram Posts Calendar',
-              icon: Icons.camera_alt,
-              isActive: false,
-              onTap: () => Get.toNamed('/instagramPost'),
+            AutomationCard(
+              iconData: Icons.camera,
+              title: 'Instagram',
+              subtitle: 'Posts Calendar',
             ),
-            _AutomationCard(
+            AutomationCard(
+              iconData: Icons.star,
               title: 'Google Reviews',
-              icon: Icons.reviews,
-              isActive: false,
-              onTap: () => (Get.toNamed('/googleReviews')),
+              subtitle: 'Review Replies',
             ),
-            _AutomationCard(
+            AutomationCard(
+              iconData: Icons.search,
               title: 'SEO Analysis',
-              icon: Icons.analytics,
-              isActive: false,
-              onTap: () {},
-            ),
-            Container(
-              padding: const EdgeInsets.all(paddingMedium),
-              child: const Center(
-                child: Text(
-                  'More awesome automations coming soon!',
-                  style: TextStyle(color: Colors.grey),
-                ),
-              ),
+              subtitle: 'Rank Higher',
             ),
           ],
         ),
@@ -220,63 +208,6 @@ class _QuickAccessButton extends StatelessWidget {
           const SizedBox(height: paddingSmall),
           Text(label),
         ],
-      ),
-    );
-  }
-}
-
-class _AutomationCard extends StatelessWidget {
-  final String title;
-  final IconData icon;
-  final bool isActive;
-  final VoidCallback onTap;
-
-  const _AutomationCard({
-    Key? key,
-    required this.title,
-    required this.icon,
-    required this.isActive,
-    required this.onTap,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Card(
-        elevation: 2,
-        color: isActive ? primaryColor : surfaceVariantColor,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-        child: Padding(
-          padding: const EdgeInsets.all(paddingMedium),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Icon(icon,
-                  size: 40,
-                  color: isActive ? onPrimaryColor : onSecondaryColor),
-              const SizedBox(height: paddingSmall),
-              Expanded(
-                child: Text(
-                  title,
-                  style: TextStyle(
-                      fontSize: 18,
-                      color: isActive ? onPrimaryColor : onSecondaryColor),
-                ),
-              ),
-              if (isActive)
-                const Align(
-                  alignment: Alignment.bottomRight,
-                  child: Icon(Icons.check_circle, color: Colors.green),
-                )
-              else
-                const Align(
-                  alignment: Alignment.bottomRight,
-                  child: Icon(Icons.info, color: Colors.grey),
-                ),
-            ],
-          ),
-        ),
       ),
     );
   }
