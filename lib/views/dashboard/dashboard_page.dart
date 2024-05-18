@@ -17,6 +17,7 @@ class _DashboardPageState extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       appBar: AppBar(
         title: const Text(appName),
         actions: [
@@ -41,6 +42,7 @@ class _DashboardPageState extends State<DashboardPage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
+        shape: const CircleBorder(),
         onPressed: () {},
         tooltip: 'Standard',
         child: const Icon(Icons.chat_bubble_outlined),
