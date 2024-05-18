@@ -6,6 +6,12 @@ class DashboardController extends GetxController {
   final AuthController _authController = Get.find();
   User? get user => _authController.user;
 
+  final RxInt selectedIndex = 0.obs;
+
+  void onItemTapped(int index) {
+    selectedIndex.value = index;
+  }
+
   void signOut() {
     _authController.signOut();
   }
