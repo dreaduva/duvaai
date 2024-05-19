@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
@@ -10,31 +9,28 @@ import '../data/repositories/auth_repository.dart';
 import '../core/routes/app_routes.dart';
 
 class AuthController extends GetxController {
-  final firebase_auth.FirebaseAuth _auth = firebase_auth.FirebaseAuth.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   final AuthRepository _authRepository = AuthRepository();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final Rx<appuser.User?> currentUser = Rx<appuser.User?>(null);
+  bool isSplashScreenCompleted = false;
 
-  firebase_auth.User? get user => _auth.currentUser;
+  User? get user => _auth.currentUser;
 
   @override
   void onReady() {
     super.onReady();
-    _auth.authStateChanges().listen(_onAuthStateChanged);
   }
 
   Future<void> loginWithGoogle() async {
     try {
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-      if (googleUser == null) {
-        return;
-      }
+      if (googleUser == null) return;
 
       final GoogleSignInAuthentication googleAuth =
           await googleUser.authentication;
-      final firebase_auth.AuthCredential credential =
-          firebase_auth.GoogleAuthProvider.credential(
+      final AuthCredential credential = GoogleAuthProvider.credential(
         idToken: googleAuth.idToken,
         accessToken: googleAuth.accessToken,
       );
@@ -43,7 +39,9 @@ class AuthController extends GetxController {
           await _auth.signInWithCredential(credential);
       await _saveUserToFirestore(userCredential.user);
 
-      Get.offAllNamed(AppRoutes.dashboard);
+      if (isSplashScreenCompleted) {
+        Get.offAllNamed(AppRoutes.dashboard);
+      }
     } catch (e) {
       _showSnackBar('Login Error', e.toString());
     }
@@ -56,15 +54,18 @@ class AuthController extends GetxController {
         AppleIDAuthorizationScopes.email,
         AppleIDAuthorizationScopes.fullName,
       ]);
-      final oauthCredential =
-          firebase_auth.OAuthProvider("apple.com").credential(
+      final oauthCredential = OAuthProvider("apple.com").credential(
         idToken: appleCredential.identityToken,
         accessToken: appleCredential.authorizationCode,
       );
+
       UserCredential userCredential =
           await _auth.signInWithCredential(oauthCredential);
       await _saveUserToFirestore(userCredential.user);
-      Get.offAllNamed(AppRoutes.dashboard);
+
+      if (isSplashScreenCompleted) {
+        Get.offAllNamed(AppRoutes.dashboard);
+      }
     } catch (e) {
       _showSnackBar('Login Error', e.toString());
     }
@@ -74,11 +75,14 @@ class AuthController extends GetxController {
     try {
       UserCredential userCredential = await _auth.signInWithEmailAndPassword(
         email: emailController.text.trim(),
-        password: passwordController.text.trim(),
+        password: emailController.text.trim(),
       );
       await _saveUserToFirestore(userCredential.user);
-      Get.offAllNamed(AppRoutes.dashboard);
-    } on firebase_auth.FirebaseAuthException catch (e) {
+
+      if (isSplashScreenCompleted) {
+        Get.offAllNamed(AppRoutes.dashboard);
+      }
+    } on FirebaseAuthException catch (e) {
       _showSnackBar('Login Error', e.message ?? 'Unknown error');
     }
   }
@@ -88,16 +92,19 @@ class AuthController extends GetxController {
       UserCredential userCredential =
           await _auth.createUserWithEmailAndPassword(
         email: emailController.text.trim(),
-        password: passwordController.text.trim(),
+        password: emailController.text.trim(),
       );
       await _saveUserToFirestore(userCredential.user);
-      Get.offAllNamed(AppRoutes.dashboard);
-    } on firebase_auth.FirebaseAuthException catch (e) {
+
+      if (isSplashScreenCompleted) {
+        Get.offAllNamed(AppRoutes.dashboard);
+      }
+    } on FirebaseAuthException catch (e) {
       _showSnackBar('Sign Up Error', e.message ?? 'Unknown error');
     }
   }
 
-  Future<void> _saveUserToFirestore(firebase_auth.User? user) async {
+  Future<void> _saveUserToFirestore(User? user) async {
     if (user != null) {
       final userDoc =
           FirebaseFirestore.instance.collection('users').doc(user.uid);
@@ -122,7 +129,9 @@ class AuthController extends GetxController {
   void signOut() async {
     await _auth.signOut();
     currentUser.value = null;
-    Get.offAllNamed(AppRoutes.login);
+    if (isSplashScreenCompleted) {
+      Get.offAllNamed(AppRoutes.login);
+    }
   }
 
   void _showSnackBar(String title, String message) {
@@ -133,20 +142,5 @@ class AuthController extends GetxController {
       backgroundColor: Colors.black54,
       colorText: Colors.white,
     );
-  }
-
-  void _onAuthStateChanged(firebase_auth.User? user) {
-    if (user == null) {
-      Get.offAllNamed(AppRoutes.login);
-    } else {
-      currentUser.value = appuser.User(
-        id: user.uid,
-        name: user.displayName ?? '',
-        email: user.email ?? '',
-        profileImageUrl: user.photoURL ?? '',
-        lastLogin: DateTime.now(),
-      );
-      Get.offAllNamed(AppRoutes.dashboard);
-    }
   }
 }

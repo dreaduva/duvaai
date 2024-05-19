@@ -6,7 +6,7 @@ import 'package:duvaai/controllers/automations/google/google_reviews_controller.
 class MainBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<AuthController>(() => AuthController());
+    Get.put<AuthController>(AuthController(), permanent: true);
     Get.lazyPut<DashboardController>(() => DashboardController());
     Get.lazyPut<GoogleReviewsController>(() => GoogleReviewsController());
   }
