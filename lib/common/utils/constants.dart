@@ -1,11 +1,9 @@
-import 'package:flutter/material.dart';
-
-// Colors
-const Color primaryColor = Colors.teal;
-const Color secondaryColor = Colors.tealAccent;
-const Color surfaceVariantColor = Color(0xFFE0E0E0);
-const Color onPrimaryColor = Colors.white;
-const Color onSecondaryColor = Colors.black;
+// // Colors
+// const Color primaryColor = Colors.teal;
+// const Color secondaryColor = Colors.tealAccent;
+// const Color surfaceVariantColor = Color(0xFFE0E0E0);
+// const Color onPrimaryColor = Colors.white;
+// const Color onSecondaryColor = Colors.black;
 
 // Dimensions
 const double paddingSmall = 8.0;

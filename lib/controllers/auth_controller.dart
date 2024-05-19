@@ -5,12 +5,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import '../data/models/user_model.dart' as appuser;
-import '../data/repositories/auth_repository.dart';
 import '../core/routes/app_routes.dart';
 
 class AuthController extends GetxController {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  final AuthRepository _authRepository = AuthRepository();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final Rx<appuser.User?> currentUser = Rx<appuser.User?>(null);
@@ -33,8 +31,7 @@ class AuthController extends GetxController {
           await _auth.signInWithCredential(credential);
       await _saveUserToFirestore(userCredential.user);
 
-      Get.offAllNamed(
-          AppRoutes.dashboard); // Navigate to dashboard after successful login
+      Get.offAllNamed(AppRoutes.dashboard);
     } catch (e) {
       _showSnackBar('Login Error', e.toString());
     }
@@ -56,8 +53,7 @@ class AuthController extends GetxController {
           await _auth.signInWithCredential(oauthCredential);
       await _saveUserToFirestore(userCredential.user);
 
-      Get.offAllNamed(
-          AppRoutes.dashboard); // Navigate to dashboard after successful login
+      Get.offAllNamed(AppRoutes.dashboard);
     } catch (e) {
       _showSnackBar('Login Error', e.toString());
     }
@@ -71,8 +67,7 @@ class AuthController extends GetxController {
       );
       await _saveUserToFirestore(userCredential.user);
 
-      Get.offAllNamed(
-          AppRoutes.dashboard); // Navigate to dashboard after successful login
+      Get.offAllNamed(AppRoutes.dashboard);
     } on FirebaseAuthException catch (e) {
       _showSnackBar('Login Error', e.message ?? 'Unknown error');
     }
@@ -87,8 +82,7 @@ class AuthController extends GetxController {
       );
       await _saveUserToFirestore(userCredential.user);
 
-      Get.offAllNamed(
-          AppRoutes.dashboard); // Navigate to dashboard after successful signup
+      Get.offAllNamed(AppRoutes.dashboard);
     } on FirebaseAuthException catch (e) {
       _showSnackBar('Sign Up Error', e.message ?? 'Unknown error');
     }
@@ -127,8 +121,6 @@ class AuthController extends GetxController {
       title,
       message,
       snackPosition: SnackPosition.BOTTOM,
-      backgroundColor: Colors.black54,
-      colorText: Colors.white,
     );
   }
 }

@@ -2,7 +2,7 @@ import 'package:duvaai/common/utils/constants.dart';
 import 'package:duvaai/views/auth/email_login_page.dart';
 import 'package:duvaai/views/auth/signup_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import '../../controllers/auth_controller.dart';
 
@@ -37,11 +37,13 @@ class LoginPage extends StatelessWidget {
               const SizedBox(height: 20),
               ElevatedButton.icon(
                 onPressed: () => _authController.loginWithGoogle(),
-                icon: const Icon(Icons.g_mobiledata, color: Colors.black),
-                label: const Text('Login with Google',
-                    style: TextStyle(color: Colors.black)),
+                icon: const Icon(Icons.g_mobiledata),
+                label: const Text('Login with Google'),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
+                  backgroundColor:
+                      Theme.of(context).colorScheme.primaryContainer,
+                  foregroundColor:
+                      Theme.of(context).colorScheme.onPrimaryContainer,
                   padding: const EdgeInsets.symmetric(
                       horizontal: paddingLarge, vertical: paddingSmall),
                   shape: RoundedRectangleBorder(
@@ -51,12 +53,14 @@ class LoginPage extends StatelessWidget {
               ),
               const SizedBox(height: paddingMedium),
               ElevatedButton.icon(
-                onPressed: () => _authController.loginWithApple,
-                icon: const Icon(Icons.apple, color: Colors.white),
-                label: const Text('Login with Apple',
-                    style: TextStyle(color: Colors.white)),
+                onPressed: () => _authController.loginWithApple(),
+                icon: const Icon(Icons.apple),
+                label: const Text('Login with Apple'),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.black,
+                  backgroundColor:
+                      Theme.of(context).colorScheme.secondaryContainer,
+                  foregroundColor:
+                      Theme.of(context).colorScheme.onSecondaryContainer,
                   padding: const EdgeInsets.symmetric(
                       horizontal: paddingLarge, vertical: paddingSmall),
                   shape: RoundedRectangleBorder(
@@ -67,11 +71,12 @@ class LoginPage extends StatelessWidget {
               const SizedBox(height: paddingMedium),
               ElevatedButton.icon(
                 onPressed: () => Get.to(EmailLoginPage()),
-                icon: const Icon(Icons.email, color: Colors.black),
-                label: const Text('Login with Email',
-                    style: TextStyle(color: Colors.black)),
+                icon: const Icon(Icons.email),
+                label: const Text('Login with Email'),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
+                  backgroundColor: Theme.of(context).colorScheme.surfaceVariant,
+                  foregroundColor:
+                      Theme.of(context).colorScheme.onSurfaceVariant,
                   padding: const EdgeInsets.symmetric(
                       horizontal: paddingLarge, vertical: paddingSmall),
                   shape: RoundedRectangleBorder(
@@ -81,7 +86,7 @@ class LoginPage extends StatelessWidget {
               ),
               TextButton(
                 onPressed: () => Get.to(SignUpPage()),
-                child: const Text('Sign Up'),
+                child: Text('Sign Up'),
               ),
             ],
           ),

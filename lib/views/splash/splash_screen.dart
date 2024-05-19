@@ -1,5 +1,6 @@
 import 'package:duvaai/controllers/auth_controller.dart';
 import 'package:duvaai/controllers/splash_comtroller.dart';
+import 'package:duvaai/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:duvaai/animations/rotating_logo_animation.dart';
@@ -27,20 +28,21 @@ class SplashScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            const Text(
+            Text(
               'DUVA AI',
               style: TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-              ),
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).colorScheme.secondary),
             ),
             const SizedBox(height: 20),
-            const Text(
+            Text(
               '"Your Personal Business Assistant"',
               style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.green),
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).colorScheme.primary,
+              ),
             ),
           ],
         ),

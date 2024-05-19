@@ -16,13 +16,17 @@ class AutomationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Card(
-      color: Colors.black,
+      color: colorScheme.surfaceContainer,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15.0),
         side: BorderSide(
-          color: isActive ? Colors.green : Colors.grey,
-          width: 2.0,
+          color: isActive
+              ? colorScheme.primaryContainer
+              : colorScheme.surfaceContainerHighest,
+          width: isActive ? 2.0 : 1.0,
         ),
       ),
       child: Stack(
@@ -32,15 +36,15 @@ class AutomationCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CircleAvatar(
-                  backgroundColor: Colors.white,
-                  child: Icon(iconData, color: Colors.grey, size: 40),
-                ),
+                Icon(iconData,
+                    color:
+                        isActive ? colorScheme.onSurface : colorScheme.outline,
+                    size: 40),
                 const SizedBox(height: 16.0),
                 Text(
                   title,
                   style: TextStyle(
-                    color: Colors.white,
+                    color: colorScheme.onSurface,
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
@@ -49,7 +53,7 @@ class AutomationCard extends StatelessWidget {
                 Text(
                   subtitle,
                   style: TextStyle(
-                    color: Colors.grey,
+                    color: colorScheme.onSurfaceVariant,
                     fontSize: 16,
                   ),
                 ),
@@ -60,16 +64,24 @@ class AutomationCard extends StatelessWidget {
             top: 16.0,
             right: 16.0,
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               decoration: BoxDecoration(
-                color: isActive ? Colors.green : Colors.grey,
-                borderRadius: BorderRadius.circular(12),
+                border: Border.all(
+                  color: isActive
+                      ? colorScheme.primaryContainer
+                      : colorScheme.outline,
+                  width: isActive ? 2.0 : 1,
+                ),
+                color: colorScheme.surfaceContainer,
+                borderRadius: BorderRadius.circular(16),
               ),
               child: Text(
                 isActive ? 'Active' : 'Inactive',
                 style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
+                  color: isActive
+                      ? colorScheme.inversePrimary
+                      : colorScheme.outline,
+                  fontWeight: FontWeight.w900,
                 ),
               ),
             ),
