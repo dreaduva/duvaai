@@ -10,12 +10,15 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: SvgPicture.asset(
-          'assets/images/duva_ai_edited.svg', // Path to your SVG logo
-          width: 200.0,
-          height: 200.0,
-          placeholderBuilder: (context) => CircularProgressIndicator(),
-          semanticsLabel: 'Company Logo',
+        child: RotationTransition(
+          turns: _splashController.rotationAnimation,
+          child: SvgPicture.asset(
+            'assets/images/duva_ai_edited.svg',
+            width: 200.0,
+            height: 200.0,
+            placeholderBuilder: (context) => const CircularProgressIndicator(),
+            semanticsLabel: 'Company Logo',
+          ),
         ),
       ),
     );
