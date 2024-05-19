@@ -1,4 +1,5 @@
 import 'package:duvaai/common/utils/constants.dart';
+import 'package:duvaai/controllers/automations/google/google_reviews_controller.dart';
 import 'package:duvaai/views/dashboard/widgets/automation_card.dart';
 import 'package:duvaai/views/dashboard/widgets/custom_bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,8 @@ class DashboardPage extends StatefulWidget {
 class _DashboardPageState extends State<DashboardPage> {
   final DashboardController _dashboardController =
       Get.put(DashboardController());
+  final GoogleReviewsController _googleReviewsController =
+      Get.put(GoogleReviewsController());
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +35,11 @@ class _DashboardPageState extends State<DashboardPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            ElevatedButton(
+              onPressed: () =>
+                  Get.find<GoogleReviewsController>().fetchReviews(),
+              child: Text('Fetch Reviews'),
+            ),
             _buildGreetingSection(context),
             const SizedBox(height: paddingMedium),
             _buildQuickAccessSection(context),

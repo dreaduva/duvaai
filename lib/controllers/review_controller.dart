@@ -1,4 +1,3 @@
-import 'package:duvaai/data/models/review_model.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -6,29 +5,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 
 class GoogleReviewsController extends GetxController {
-  final reviews = <Review>[].obs;
-
-  @override
-  void onInit() {
-    super.onInit();
-    _listenToReviews();
-  }
-
-  void _listenToReviews() {
-    final user = FirebaseAuth.instance.currentUser;
-    if (user == null) return;
-
-    FirebaseFirestore.instance
-        .collection('users')
-        .doc(user.uid)
-        .collection('reviews')
-        .snapshots()
-        .listen((snapshot) {
-      reviews.value =
-          snapshot.docs.map((doc) => Review.fromSnapshot(doc)).toList();
-    });
-  }
-
   Future<void> fetchReviews() async {
     final user = FirebaseAuth.instance.currentUser;
     if (user == null) return;

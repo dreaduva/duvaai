@@ -3,9 +3,8 @@ import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'core/theme/app_theme.dart';
 import 'core/localization/app_localizations.dart';
-import 'bindings/auth_binding.dart';
+import 'bindings/main_binding.dart';
 import 'core/routes/app_routes.dart';
-import 'controllers/auth_controller.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,8 +13,6 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  final AuthController _authController = Get.put(AuthController());
-
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -35,9 +32,8 @@ class MyApp extends StatelessWidget {
       translations: AppLocalizations(),
       locale: Get.deviceLocale,
       fallbackLocale: const Locale('en', 'US'),
-      initialBinding: AuthBinding(),
-      initialRoute:
-          _authController.user == null ? AppRoutes.login : AppRoutes.dashboard,
+      initialBinding: MainBinding(),
+      initialRoute: AppRoutes.splash,
       getPages: AppRoutes.pages,
     );
   }
