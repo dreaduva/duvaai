@@ -14,14 +14,8 @@ class AuthController extends GetxController {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final Rx<appuser.User?> currentUser = Rx<appuser.User?>(null);
-  bool isSplashScreenCompleted = false;
 
   User? get user => _auth.currentUser;
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
 
   Future<void> loginWithGoogle() async {
     try {
@@ -39,9 +33,8 @@ class AuthController extends GetxController {
           await _auth.signInWithCredential(credential);
       await _saveUserToFirestore(userCredential.user);
 
-      if (isSplashScreenCompleted) {
-        Get.offAllNamed(AppRoutes.dashboard);
-      }
+      Get.offAllNamed(
+          AppRoutes.dashboard); // Navigate to dashboard after successful login
     } catch (e) {
       _showSnackBar('Login Error', e.toString());
     }
@@ -63,9 +56,8 @@ class AuthController extends GetxController {
           await _auth.signInWithCredential(oauthCredential);
       await _saveUserToFirestore(userCredential.user);
 
-      if (isSplashScreenCompleted) {
-        Get.offAllNamed(AppRoutes.dashboard);
-      }
+      Get.offAllNamed(
+          AppRoutes.dashboard); // Navigate to dashboard after successful login
     } catch (e) {
       _showSnackBar('Login Error', e.toString());
     }
@@ -75,13 +67,12 @@ class AuthController extends GetxController {
     try {
       UserCredential userCredential = await _auth.signInWithEmailAndPassword(
         email: emailController.text.trim(),
-        password: emailController.text.trim(),
+        password: passwordController.text.trim(),
       );
       await _saveUserToFirestore(userCredential.user);
 
-      if (isSplashScreenCompleted) {
-        Get.offAllNamed(AppRoutes.dashboard);
-      }
+      Get.offAllNamed(
+          AppRoutes.dashboard); // Navigate to dashboard after successful login
     } on FirebaseAuthException catch (e) {
       _showSnackBar('Login Error', e.message ?? 'Unknown error');
     }
@@ -96,9 +87,8 @@ class AuthController extends GetxController {
       );
       await _saveUserToFirestore(userCredential.user);
 
-      if (isSplashScreenCompleted) {
-        Get.offAllNamed(AppRoutes.dashboard);
-      }
+      Get.offAllNamed(
+          AppRoutes.dashboard); // Navigate to dashboard after successful signup
     } on FirebaseAuthException catch (e) {
       _showSnackBar('Sign Up Error', e.message ?? 'Unknown error');
     }
@@ -129,9 +119,7 @@ class AuthController extends GetxController {
   void signOut() async {
     await _auth.signOut();
     currentUser.value = null;
-    if (isSplashScreenCompleted) {
-      Get.offAllNamed(AppRoutes.login);
-    }
+    Get.offAllNamed(AppRoutes.login);
   }
 
   void _showSnackBar(String title, String message) {
