@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:duvaai/views/auth/email_login_page.dart';
 import 'package:duvaai/views/automations/google/google_reviews_page.dart';
 import 'package:duvaai/views/splash/splash_screen.dart';
@@ -16,9 +17,13 @@ class AppRoutes {
 
   static final pages = [
     GetPage(name: splash, page: () => SplashScreen()),
-    GetPage(name: login, page: () => LoginPage()),
+    GetPage(
+        name: login, transition: Transition.native, page: () => LoginPage()),
     GetPage(name: emailLogin, page: () => EmailLoginPage()),
-    GetPage(name: dashboard, page: () => DashboardPage()),
+    GetPage(
+        name: dashboard,
+        transition: Transition.native,
+        page: () => DashboardPage()),
     GetPage(name: googleReviews, page: () => GoogleReviewsPage()),
     // GetPage(name: facebookPost, page: () => FacebookPostPage()),
     // GetPage(name: instagramPost, page: () => InstagramPostPage()),

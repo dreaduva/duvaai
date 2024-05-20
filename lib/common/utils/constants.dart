@@ -6,6 +6,7 @@
 // const Color onSecondaryColor = Colors.black;
 
 // Dimensions
+const double paddingTiny = 4.0;
 const double paddingSmall = 8.0;
 const double paddingMedium = 16.0;
 const double paddingLarge = 32.0;

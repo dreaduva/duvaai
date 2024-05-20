@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   static final Color seedColor = Colors.green;
-  static final TextTheme baseTextTheme = GoogleFonts.latoTextTheme();
+  static final TextTheme baseTextTheme = GoogleFonts.montserratTextTheme();
 
   static final TextTheme lightTextTheme = TextTheme(
     displayLarge: baseTextTheme.displayLarge?.copyWith(

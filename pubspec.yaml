@@ -74,6 +74,7 @@ flutter:
     - lib/core/localization/en.json
     - lib/core/localization/es.json
     - assets/images/duva_ai_edited.svg
+    - assets/images/profile.png
 
   # fonts:
   #   - family: Schyler
