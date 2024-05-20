@@ -1,6 +1,5 @@
 import 'package:duvaai/controllers/auth_controller.dart';
 import 'package:duvaai/controllers/splash_comtroller.dart';
-import 'package:duvaai/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:duvaai/animations/rotating_logo_animation.dart';
