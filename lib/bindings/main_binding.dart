@@ -7,7 +7,7 @@ class MainBinding extends Bindings {
   @override
   void dependencies() {
     Get.put<AuthController>(AuthController(), permanent: true);
-    Get.lazyPut<DashboardController>(() => DashboardController());
+    Get.lazyPut<DashboardController>(() => DashboardController(), fenix: true);
     Get.lazyPut<GoogleReviewsController>(() => GoogleReviewsController());
   }
 }
