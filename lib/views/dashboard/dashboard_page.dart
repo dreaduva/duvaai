@@ -62,15 +62,22 @@ class _DashboardPageState extends State<DashboardPage> {
         padding: EdgeInsets.zero,
         children: <Widget>[
           UserAccountsDrawerHeader(
+            decoration: BoxDecoration(
+              color: AppTheme.primaryContainer(context),
+            ),
             accountName: Text(
-              'Anna',
+              _dashboardController.user?.displayName ?? 'Guest',
               style: AppTheme.bodyMedium(context),
             ),
-            accountEmail:
-                Text('anna@example.com', style: AppTheme.bodyMedium(context)),
-            currentAccountPicture: const CircleAvatar(
-              backgroundImage: AssetImage(
-                  'assets/images/profile.png'), // Replace with actual image
+            accountEmail: Text(
+              _dashboardController.user?.email ?? '',
+              style: AppTheme.bodyMedium(context),
+            ),
+            currentAccountPicture: CircleAvatar(
+              backgroundImage: NetworkImage(
+                _dashboardController.user?.photoURL ??
+                    'assets/images/profile.png',
+              ),
             ),
           ),
           ListTile(
@@ -352,9 +359,12 @@ Widget _buildTitleSection(BuildContext context) {
           ),
           GestureDetector(
             onTap: () => Scaffold.of(context).openEndDrawer(),
-            child: const CircleAvatar(
+            child: CircleAvatar(
               radius: 28,
-              backgroundImage: AssetImage('assets/images/profile.png'),
+              backgroundImage: NetworkImage(
+                dashboardController.user?.photoURL ??
+                    'assets/images/profile.png',
+              ),
             ),
           ),
         ],

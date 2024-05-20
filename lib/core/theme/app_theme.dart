@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
-  static final Color seedColor = Colors.green;
+  static const Color seedColor = Colors.green;
   static final TextTheme baseTextTheme = GoogleFonts.montserratTextTheme();
 
   static final TextTheme lightTextTheme = TextTheme(
@@ -45,7 +45,7 @@ class AppTheme {
     ),
     useMaterial3: true,
     textTheme: lightTextTheme,
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       backgroundColor: seedColor,
       foregroundColor: Colors.white,
     ),
@@ -147,7 +147,7 @@ class AppTheme {
     ),
     useMaterial3: true,
     textTheme: darkTextTheme,
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       backgroundColor: seedColor,
       foregroundColor: Colors.white,
     ),
@@ -169,14 +169,101 @@ class AppTheme {
       Theme.of(context).colorScheme.primary;
   static Color onPrimary(BuildContext context) =>
       Theme.of(context).colorScheme.onPrimary;
+  static Color primaryContainer(BuildContext context) =>
+      Theme.of(context).colorScheme.primaryContainer;
+  static Color onPrimaryContainer(BuildContext context) =>
+      Theme.of(context).colorScheme.onPrimaryContainer;
+  static Color primaryFixed(BuildContext context) =>
+      Theme.of(context).colorScheme.primaryFixed;
+  static Color primaryFixedDim(BuildContext context) =>
+      Theme.of(context).colorScheme.primaryFixedDim;
+  static Color onPrimaryFixed(BuildContext context) =>
+      Theme.of(context).colorScheme.onPrimaryFixed;
+  static Color onPrimaryFixedVariant(BuildContext context) =>
+      Theme.of(context).colorScheme.onPrimaryFixedVariant;
+
   static Color secondary(BuildContext context) =>
       Theme.of(context).colorScheme.secondary;
   static Color onSecondary(BuildContext context) =>
       Theme.of(context).colorScheme.onSecondary;
+  static Color secondaryContainer(BuildContext context) =>
+      Theme.of(context).colorScheme.secondaryContainer;
+  static Color onSecondaryContainer(BuildContext context) =>
+      Theme.of(context).colorScheme.onSecondaryContainer;
+  static Color secondaryFixed(BuildContext context) =>
+      Theme.of(context).colorScheme.secondaryFixed;
+  static Color secondaryFixedDim(BuildContext context) =>
+      Theme.of(context).colorScheme.secondaryFixedDim;
+  static Color onSecondaryFixed(BuildContext context) =>
+      Theme.of(context).colorScheme.onSecondaryFixed;
+  static Color onSecondaryFixedVariant(BuildContext context) =>
+      Theme.of(context).colorScheme.onSecondaryFixedVariant;
+
+  static Color tertiary(BuildContext context) =>
+      Theme.of(context).colorScheme.tertiary;
+  static Color onTertiary(BuildContext context) =>
+      Theme.of(context).colorScheme.onTertiary;
+  static Color tertiaryContainer(BuildContext context) =>
+      Theme.of(context).colorScheme.tertiaryContainer;
+  static Color onTertiaryContainer(BuildContext context) =>
+      Theme.of(context).colorScheme.onTertiaryContainer;
+  static Color tertiaryFixed(BuildContext context) =>
+      Theme.of(context).colorScheme.tertiaryFixed;
+  static Color tertiaryFixedDim(BuildContext context) =>
+      Theme.of(context).colorScheme.tertiaryFixedDim;
+  static Color onTertiaryFixed(BuildContext context) =>
+      Theme.of(context).colorScheme.onTertiaryFixed;
+  static Color onTertiaryFixedVariant(BuildContext context) =>
+      Theme.of(context).colorScheme.onTertiaryFixedVariant;
+
+  static Color error(BuildContext context) =>
+      Theme.of(context).colorScheme.error;
+  static Color onError(BuildContext context) =>
+      Theme.of(context).colorScheme.onError;
+  static Color errorContainer(BuildContext context) =>
+      Theme.of(context).colorScheme.errorContainer;
+  static Color onErrorContainer(BuildContext context) =>
+      Theme.of(context).colorScheme.onErrorContainer;
+
   static Color surface(BuildContext context) =>
       Theme.of(context).colorScheme.surface;
   static Color onSurface(BuildContext context) =>
       Theme.of(context).colorScheme.onSurface;
+  static Color onSurfaceVariant(BuildContext context) =>
+      Theme.of(context).colorScheme.onSurfaceVariant;
+  static Color inverseSurface(BuildContext context) =>
+      Theme.of(context).colorScheme.inverseSurface;
+  static Color onInverseSurface(BuildContext context) =>
+      Theme.of(context).colorScheme.onInverseSurface;
+
+  static Color outline(BuildContext context) =>
+      Theme.of(context).colorScheme.outline;
+  static Color outlineVariant(BuildContext context) =>
+      Theme.of(context).colorScheme.outlineVariant;
+  static Color shadow(BuildContext context) =>
+      Theme.of(context).colorScheme.shadow;
+  static Color scrim(BuildContext context) =>
+      Theme.of(context).colorScheme.scrim;
+  static Color surfaceTint(BuildContext context) =>
+      Theme.of(context).colorScheme.surfaceTint;
+
+  static Color inversePrimary(BuildContext context) =>
+      Theme.of(context).colorScheme.inversePrimary;
+
+  static Color surfaceBright(BuildContext context) =>
+      Theme.of(context).colorScheme.surfaceBright;
+  static Color surfaceContainerLowest(BuildContext context) =>
+      Theme.of(context).colorScheme.surfaceContainerLowest;
+  static Color surfaceContainerLow(BuildContext context) =>
+      Theme.of(context).colorScheme.surfaceContainerLow;
+  static Color surfaceContainer(BuildContext context) =>
+      Theme.of(context).colorScheme.surfaceContainer;
+  static Color surfaceContainerHigh(BuildContext context) =>
+      Theme.of(context).colorScheme.surfaceContainerHigh;
+  static Color surfaceContainerHighest(BuildContext context) =>
+      Theme.of(context).colorScheme.surfaceContainerHighest;
+  static Color surfaceDim(BuildContext context) =>
+      Theme.of(context).colorScheme.surfaceDim;
 
   // Helper methods to access text theme more easily
   static TextStyle displayLarge(BuildContext context) =>
