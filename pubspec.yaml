@@ -41,6 +41,7 @@ dependencies:
   google_my_business: ^0.3.4
   flutter_svg: ^2.0.10+1
   shared_preferences: ^2.2.3
+  responsive_sizer: ^3.3.1
   flutter_localizations:
     sdk: flutter
 

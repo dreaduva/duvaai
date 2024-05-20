@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:responsive_sizer/responsive_sizer.dart'; // Import the responsive_sizer plugin
 
 class AutomationCard extends StatelessWidget {
   final IconData iconData;
@@ -51,20 +52,23 @@ class AutomationCard extends StatelessWidget {
       child: Stack(
         children: [
           Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding:
+                EdgeInsets.all(4.w), // Adjusted padding using responsive_sizer
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Icon(iconData,
-                    color:
-                        isActive ? colorScheme.onSurface : colorScheme.outline,
-                    size: 40),
-                const SizedBox(height: 48.0),
+                Icon(
+                  iconData,
+                  color: isActive ? colorScheme.onSurface : colorScheme.outline,
+                  size: 9.w, // Adjusted icon size using responsive_sizer
+                ),
+                SizedBox(height: 5.h), // Adjusted height using responsive_sizer
                 Text(
                   title,
                   style: TextStyle(
                     color: colorScheme.onSurface,
-                    fontSize: 18,
+                    fontSize:
+                        16.sp, // Adjusted font size using responsive_sizer
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -72,15 +76,16 @@ class AutomationCard extends StatelessWidget {
                   subtitle,
                   style: TextStyle(
                     color: colorScheme.onSurfaceVariant,
-                    fontSize: 16,
+                    fontSize:
+                        16.sp, // Adjusted font size using responsive_sizer
                   ),
                 ),
               ],
             ),
           ),
           Positioned(
-            top: 20.0,
-            right: 16.0,
+            top: 5.5.w, // Adjusted position using responsive_sizer
+            right: 4.w, // Adjusted position using responsive_sizer
             child: Row(
               children: [
                 GestureDetector(
@@ -88,13 +93,15 @@ class AutomationCard extends StatelessWidget {
                   child: Icon(
                     Icons.info,
                     color: colorScheme.outline,
-                    size: 20,
+                    size: 5.w, // Adjusted icon size using responsive_sizer
                   ),
                 ),
-                const SizedBox(width: 8),
+                SizedBox(width: 2.w), // Adjusted width using responsive_sizer
                 Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: 1.5.w,
+                      vertical:
+                          0.5.h), // Adjusted padding using responsive_sizer
                   decoration: BoxDecoration(
                     border: Border.all(
                       color: isActive
@@ -106,8 +113,11 @@ class AutomationCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: Text(
-                    isActive ? 'Active' : 'Inactive',
+                    isActive
+                        ? 'Active'.toUpperCase()
+                        : 'Inactive'.toUpperCase(),
                     style: TextStyle(
+                      fontSize: 12.sp,
                       color: isActive
                           ? colorScheme.inversePrimary
                           : colorScheme.outline,
