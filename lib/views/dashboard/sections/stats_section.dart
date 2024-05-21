@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:duvaai/common/utils/constants.dart';
+import 'package:uicons/uicons.dart';
 
 class StatsSection extends StatelessWidget {
   @override
@@ -14,11 +15,14 @@ class StatsSection extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _buildStatCard(context, '200', 'Comments', Icons.comment),
+                _buildStatCard(context, '200', 'Comments',
+                    UIcons.solidRounded.comments, Colors.black),
                 const SizedBox(width: paddingSmall),
-                _buildStatCard(context, '10', 'Reviews', Icons.star),
+                _buildStatCard(context, '10', 'Reviews',
+                    UIcons.solidRounded.stars, Colors.orange),
                 const SizedBox(width: paddingSmall),
-                _buildStatCard(context, '10', 'Reviews', Icons.star),
+                _buildStatCard(
+                    context, '10', 'Likes', Icons.thumb_up, Colors.green),
               ],
             ),
           ),
@@ -27,8 +31,8 @@ class StatsSection extends StatelessWidget {
     );
   }
 
-  Widget _buildStatCard(
-      BuildContext context, String count, String label, IconData icon) {
+  Widget _buildStatCard(BuildContext context, String count, String label,
+      IconData icon, Color iconColor) {
     final colorScheme = Theme.of(context).colorScheme;
     return Card(
       elevation: 5,
@@ -49,7 +53,7 @@ class StatsSection extends StatelessWidget {
                 Icon(
                   icon,
                   size: 30,
-                  color: colorScheme.onSurface,
+                  color: iconColor, // Use the iconColor parameter
                 ),
                 const Spacer(),
                 Text(

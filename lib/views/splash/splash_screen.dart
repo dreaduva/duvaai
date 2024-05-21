@@ -27,7 +27,7 @@ class SplashScreen extends StatelessWidget {
             ),
             SizedBox(height: 5.h), // Adjusted height using responsive_sizer
             Text(
-              'DUVA AI',
+              'Duva AI',
               style: TextStyle(
                   fontSize: 22.sp, // Adjusted font size using responsive_sizer
                   fontWeight: FontWeight.bold,

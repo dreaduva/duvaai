@@ -4,6 +4,7 @@ import 'package:duvaai/views/auth/signup_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:ionicons/ionicons.dart';
 import '../../controllers/auth_controller.dart';
 
 class LoginPage extends StatelessWidget {
@@ -37,7 +38,7 @@ class LoginPage extends StatelessWidget {
               const SizedBox(height: 20),
               ElevatedButton.icon(
                 onPressed: () => _authController.loginWithGoogle(),
-                icon: const Icon(Icons.g_mobiledata),
+                icon: const Icon(Ionicons.logo_google),
                 label: const Text('Login with Google'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor:
@@ -54,7 +55,7 @@ class LoginPage extends StatelessWidget {
               const SizedBox(height: paddingMedium),
               ElevatedButton.icon(
                 onPressed: () => _authController.loginWithApple(),
-                icon: const Icon(Icons.apple),
+                icon: const Icon(Ionicons.logo_apple),
                 label: const Text('Login with Apple'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor:
@@ -71,7 +72,7 @@ class LoginPage extends StatelessWidget {
               const SizedBox(height: paddingMedium),
               ElevatedButton.icon(
                 onPressed: () => Get.to(EmailLoginPage()),
-                icon: const Icon(Icons.email),
+                icon: const Icon(Ionicons.mail),
                 label: const Text('Login with Email'),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Theme.of(context).colorScheme.surfaceVariant,

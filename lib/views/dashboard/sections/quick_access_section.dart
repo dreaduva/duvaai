@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uicons/uicons.dart';
 
 class QuickAccessSection extends StatelessWidget {
   @override
@@ -15,7 +16,7 @@ class QuickAccessSection extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             _QuickAccessButton(
-              icon: Icons.task_alt_sharp,
+              icon: UIcons.solidRounded.loading,
               label: 'Tasks',
               onTap: () {},
             ),
@@ -27,19 +28,19 @@ class QuickAccessSection extends StatelessWidget {
             ),
             const SizedBox(width: 8),
             _QuickAccessButton(
-              icon: Icons.lightbulb,
+              icon: UIcons.solidRounded.lightbulb_dollar,
               label: 'Tips',
               onTap: () {},
             ),
             const SizedBox(width: 8),
             _QuickAccessButton(
-              icon: Icons.person,
-              label: 'Profile',
+              icon: UIcons.solidRounded.shop,
+              label: 'Company',
               onTap: () {},
             ),
             const SizedBox(width: 8),
             _QuickAccessButton(
-              icon: Icons.more_horiz,
+              icon: UIcons.solidRounded.menu_dots,
               label: 'More',
               onTap: () {},
             ),

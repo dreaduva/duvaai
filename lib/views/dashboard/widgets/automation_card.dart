@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:responsive_sizer/responsive_sizer.dart'; // Import the responsive_sizer plugin
+import 'package:responsive_sizer/responsive_sizer.dart';
+import 'package:uicons/uicons.dart'; // Import the responsive_sizer plugin
 
 class AutomationCard extends StatelessWidget {
   final IconData iconData;
@@ -8,6 +9,7 @@ class AutomationCard extends StatelessWidget {
   final String subtitle;
   final String infoMessage;
   final bool isActive;
+  final Color iconColor; // Add iconColor parameter
 
   const AutomationCard({
     Key? key,
@@ -16,6 +18,7 @@ class AutomationCard extends StatelessWidget {
     required this.subtitle,
     required this.infoMessage,
     this.isActive = false,
+    required this.iconColor, // Add this to the constructor
   }) : super(key: key);
 
   void _showInfoDialog() {
@@ -59,7 +62,9 @@ class AutomationCard extends StatelessWidget {
               children: [
                 Icon(
                   iconData,
-                  color: isActive ? colorScheme.onSurface : colorScheme.outline,
+                  color: isActive
+                      ? iconColor
+                      : colorScheme.outline, // Use the iconColor parameter
                   size: 9.w, // Adjusted icon size using responsive_sizer
                 ),
                 SizedBox(height: 5.h), // Adjusted height using responsive_sizer
@@ -91,9 +96,9 @@ class AutomationCard extends StatelessWidget {
                 GestureDetector(
                   onTap: _showInfoDialog,
                   child: Icon(
-                    Icons.info,
+                    UIcons.solidRounded.info,
                     color: colorScheme.outline,
-                    size: 5.w, // Adjusted icon size using responsive_sizer
+                    size: 4.w, // Adjusted icon size using responsive_sizer
                   ),
                 ),
                 SizedBox(width: 2.w), // Adjusted width using responsive_sizer
