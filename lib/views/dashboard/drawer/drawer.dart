@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:duvaai/controllers/dashboard_controller.dart';
 import 'package:duvaai/controllers/theme_controller.dart';
 import 'package:duvaai/core/theme/app_theme.dart';
+import 'package:uicons/uicons.dart';
 
 class DashboardDrawer extends StatelessWidget {
   final DashboardController _dashboardController =
@@ -35,7 +36,7 @@ class DashboardDrawer extends StatelessWidget {
             ),
           ),
           ListTile(
-            leading: const Icon(Icons.logout),
+            leading: Icon(UIcons.regularRounded.sign_out_alt),
             title: Text(
               'Sign Out',
               style: AppTheme.bodyMedium(context),
@@ -45,8 +46,8 @@ class DashboardDrawer extends StatelessWidget {
           ListTile(
             leading: Obx(() => Icon(
                   _themeController.isDarkTheme.value
-                      ? Icons.light_mode
-                      : Icons.dark_mode,
+                      ? UIcons.regularRounded.sun
+                      : UIcons.regularRounded.moon,
                 )),
             title: const Text('Toggle Theme'),
             onTap: () => _themeController.toggleTheme(),
