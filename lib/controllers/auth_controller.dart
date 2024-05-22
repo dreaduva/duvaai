@@ -1,7 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import '../data/models/user_model.dart' as appuser;
@@ -12,13 +12,18 @@ class AuthController extends GetxController {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final Rx<appuser.User?> currentUser = Rx<appuser.User?>(null);
+  var isLoading = false.obs;
 
   User? get user => _auth.currentUser;
 
   Future<void> loginWithGoogle() async {
+    isLoading.value = true; // Set loading to true
     try {
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-      if (googleUser == null) return;
+      if (googleUser == null) {
+        isLoading.value = false; // Set loading to false if cancelled
+        return;
+      }
 
       final GoogleSignInAuthentication googleAuth =
           await googleUser.authentication;
@@ -34,6 +39,8 @@ class AuthController extends GetxController {
       Get.offAllNamed(AppRoutes.dashboard);
     } catch (e) {
       _showSnackBar('Login Error', e.toString());
+    } finally {
+      isLoading.value = false; // Set loading to false after process
     }
   }
 

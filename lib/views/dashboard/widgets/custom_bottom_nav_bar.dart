@@ -10,10 +10,11 @@ class CustomBottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
+      elevation: 0,
+      height: 8.h,
       shape: const CircularNotchedRectangle(),
-      notchMargin: 4.w,
+      notchMargin: 2.h, // Adjusted notch margin using responsive_sizer
       child: SizedBox(
-        height: 10.h, // Adjusted height using responsive_sizer
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
@@ -46,21 +47,21 @@ class CustomBottomNavBar extends StatelessWidget {
     return Obx(() {
       final bool isSelected = _navController.selectedIndex.value == index;
       return MaterialButton(
-        minWidth: 10.w, // Adjusted min width using responsive_sizer
+        minWidth: 4.w, // Adjusted min width using responsive_sizer
         onPressed: () => _navController.onItemTapped(index),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
               isSelected ? solidIcon : regularIcon,
-              size: 3.h, // Adjusted icon size using responsive_sizer
+              size: 2.5.h, // Adjusted icon size using responsive_sizer
               color: isSelected ? theme.primary : theme.onSurface,
             ),
-            SizedBox(height: 0.5.h), // Adjusted spacing using responsive_sizer
+            SizedBox(height: 0.3.h), // Adjusted spacing using responsive_sizer
             Text(
               label,
               style: TextStyle(
-                fontSize: 14.sp, // Adjusted font size using responsive_sizer
+                fontSize: 12.sp, // Adjusted font size using responsive_sizer
                 color: isSelected ? theme.primary : theme.onSurface,
               ),
             ),
