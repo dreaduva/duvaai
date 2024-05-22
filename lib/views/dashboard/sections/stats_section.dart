@@ -78,7 +78,7 @@ class _StatsSectionState extends State<StatsSection> {
             color: colorScheme.surfaceContainer,
             borderRadius: BorderRadius.circular(16),
           ),
-          height: 10.h,
+          height: 12.h,
           width: 41.8.w, // Adjusted width using responsive_sizer
           padding:
               EdgeInsets.all(2.w), // Adjusted padding using responsive_sizer

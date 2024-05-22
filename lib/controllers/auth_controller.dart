@@ -19,6 +19,9 @@ class AuthController extends GetxController {
   Future<void> loginWithGoogle() async {
     isLoading.value = true; // Set loading to true
     try {
+      await GoogleSignIn()
+          .signOut(); // Sign out from GoogleSignIn to choose a different account
+
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
       if (googleUser == null) {
         isLoading.value = false; // Set loading to false if cancelled
@@ -117,8 +120,9 @@ class AuthController extends GetxController {
     }
   }
 
-  void signOut() async {
-    await _auth.signOut();
+  Future<void> signOut() async {
+    await GoogleSignIn().signOut(); // Sign out from GoogleSignIn
+    await _auth.signOut(); // Sign out from FirebaseAuth
     currentUser.value = null;
     Get.offAllNamed(AppRoutes.login);
   }
