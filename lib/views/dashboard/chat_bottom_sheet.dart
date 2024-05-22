@@ -17,26 +17,28 @@ class ChatBottomSheet extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Row(
-            children: [
-              Center(
-                child: SvgPicture.asset(
+          Center(
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SvgPicture.asset(
                   'assets/images/duva_ai_edited.svg',
                   width: 5.w,
                   height: 5.h,
                 ),
-              ),
-              const SizedBox(width: 8),
-              Text(
-                'Chat',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Theme.of(context).colorScheme.onSurface,
+                const SizedBox(width: 8),
+                Text(
+                  'Chat',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Theme.of(context).colorScheme.onSurface,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
+          SizedBox(height: 2.h), // Add some spacing between header and list
           Expanded(
             child: ListView.builder(
               itemCount: 5, // Sample item count

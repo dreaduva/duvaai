@@ -47,7 +47,6 @@ class _StatsSectionState extends State<StatsSection> {
             },
           ),
         ),
-        SizedBox(height: 2.h), // Adjust spacing as needed
         Center(
           child: SmoothPageIndicator(
             controller: _pageController,
@@ -71,7 +70,7 @@ class _StatsSectionState extends State<StatsSection> {
       padding: EdgeInsets.symmetric(
           horizontal: 1.w), // Adjusted padding between cards
       child: Card(
-        elevation: 5,
+        elevation: 2,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         child: Container(
           decoration: BoxDecoration(
