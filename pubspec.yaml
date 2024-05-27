@@ -44,6 +44,7 @@ flutter:
     - lib/core/localization/es.json
     - assets/images/duva_ai_edited.svg
     - assets/images/profile.png
+    - assets/images/
 
 icons_launcher:
   image_path: "assets/images/duva_ai.png"

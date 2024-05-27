@@ -38,8 +38,8 @@ class QuickAccessSection extends StatelessWidget {
             ),
             SizedBox(width: 2.w),
             _QuickAccessButton(
-              icon: UIcons.solidRounded.shop,
-              label: 'Company',
+              icon: UIcons.solidRounded.link_horizontal,
+              label: 'Connections',
               onTap: () {},
             ),
             SizedBox(width: 2.w),

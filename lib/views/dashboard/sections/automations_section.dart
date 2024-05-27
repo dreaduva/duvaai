@@ -1,4 +1,6 @@
+import 'package:duvaai/core/routes/app_routes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:uicons/uicons.dart';
 import '../widgets/automation_card.dart';
@@ -34,7 +36,8 @@ class AutomationsSection extends StatelessWidget {
           crossAxisSpacing: 8,
           mainAxisSpacing: 8,
           children: [
-            const AutomationCard(
+            AutomationCard(
+              onTap: () => Get.toNamed(AppRoutes.facebookPost),
               iconData: Ionicons.logo_facebook,
               iconColor: Colors.blue,
               title: 'Facebook',
@@ -42,7 +45,8 @@ class AutomationsSection extends StatelessWidget {
               infoMessage: 'Create and post content for you daily on Facebook',
               isActive: true,
             ),
-            const AutomationCard(
+            AutomationCard(
+              onTap: () => Get.toNamed(AppRoutes.instagramPost),
               iconColor: Colors.pink,
               iconData: Ionicons.logo_instagram,
               title: 'Instagram',
@@ -50,7 +54,8 @@ class AutomationsSection extends StatelessWidget {
               infoMessage: 'Instagram, create and post content for you daily',
               isActive: false,
             ),
-            const AutomationCard(
+            AutomationCard(
+              onTap: () => Get.toNamed(AppRoutes.googleReviews),
               iconColor: Colors.white,
               iconData: Ionicons.logo_google,
               title: 'Google Reviews',
@@ -58,6 +63,7 @@ class AutomationsSection extends StatelessWidget {
               infoMessage: 'Reply professionally to your reviews',
             ),
             AutomationCard(
+              onTap: () {},
               iconColor: Colors.white,
               iconData: UIcons.solidRounded.bullseye_pointer,
               title: 'SEO Analysis',
