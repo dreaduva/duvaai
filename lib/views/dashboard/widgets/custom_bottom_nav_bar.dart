@@ -22,14 +22,14 @@ class CustomBottomNavBar extends StatelessWidget {
               children: [
                 _buildNavItem(context, UIcons.solidRounded.home,
                     UIcons.regularRounded.home, 'Home', 0),
-                _buildNavItem(context, UIcons.solidRounded.bars_progress,
-                    UIcons.regularRounded.bars_progress, 'Analytics', 1),
+                _buildNavItem(context, UIcons.solidRounded.star,
+                    UIcons.regularRounded.star, 'Tips', 1),
               ],
             ),
             Row(
               children: [
-                _buildNavItem(context, UIcons.solidRounded.star,
-                    UIcons.regularRounded.star, 'Tips', 2),
+                _buildNavItem(context, UIcons.solidRounded.bars_progress,
+                    UIcons.regularRounded.bars_progress, 'Analytics', 2),
                 _buildNavItem(context, UIcons.solidRounded.settings,
                     UIcons.regularRounded.settings, 'Settings', 3),
               ],

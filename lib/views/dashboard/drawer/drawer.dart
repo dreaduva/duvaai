@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:duvaai/controllers/dashboard_controller.dart';
 import 'package:duvaai/controllers/theme_controller.dart';
 import 'package:duvaai/core/theme/app_theme.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:uicons/uicons.dart';
 
 class DashboardDrawer extends StatelessWidget {
@@ -33,6 +34,13 @@ class DashboardDrawer extends StatelessWidget {
                 _dashboardController.user?.photoURL ??
                     'assets/images/profile.png',
               ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 8.w),
+            child: OutlinedButton(
+              onPressed: () {},
+              child: Text('Change Location'),
             ),
           ),
           ListTile(

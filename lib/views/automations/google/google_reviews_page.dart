@@ -268,7 +268,7 @@ class GoogleReviewPage extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: 10.h,
+          top: 8.h,
           left: -1.w,
           child: RotatedBox(
             quarterTurns: 3,

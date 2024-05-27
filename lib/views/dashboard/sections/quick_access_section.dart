@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ionicons/ionicons.dart';
 import 'package:responsive_sizer/responsive_sizer.dart'; // Import the responsive_sizer plugin
 import 'package:uicons/uicons.dart';
 
@@ -32,14 +33,14 @@ class QuickAccessSection extends StatelessWidget {
             ),
             SizedBox(width: 2.w),
             _QuickAccessButton(
-              icon: UIcons.solidRounded.lightbulb_dollar,
-              label: 'Tips',
+              icon: UIcons.solidRounded.link,
+              label: 'Connected',
               onTap: () {},
             ),
             SizedBox(width: 2.w),
             _QuickAccessButton(
-              icon: UIcons.solidRounded.link_horizontal,
-              label: 'Connections',
+              icon: UIcons.solidRounded.location_alt,
+              label: 'Locations',
               onTap: () {},
             ),
             SizedBox(width: 2.w),
