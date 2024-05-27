@@ -27,12 +27,6 @@ class QuickAccessSection extends StatelessWidget {
             ),
             SizedBox(width: 2.w),
             _QuickAccessButton(
-              icon: Icons.bar_chart,
-              label: 'Analytics',
-              onTap: () {},
-            ),
-            SizedBox(width: 2.w),
-            _QuickAccessButton(
               icon: UIcons.solidRounded.link,
               label: 'Connected',
               onTap: () {},
@@ -41,6 +35,12 @@ class QuickAccessSection extends StatelessWidget {
             _QuickAccessButton(
               icon: UIcons.solidRounded.location_alt,
               label: 'Locations',
+              onTap: () {},
+            ),
+            SizedBox(width: 2.w),
+            _QuickAccessButton(
+              icon: UIcons.solidRounded.comment_question,
+              label: 'Help',
               onTap: () {},
             ),
             SizedBox(width: 2.w),
